@@ -41,6 +41,16 @@ export class Characters {
     }
   }
 
+  async getRandom() {
+    try {
+      let response = await fetch(`https://uinames.com/api/`);
+      let jsonifiedResponse = await response.json();
+      return jsonifiedResponse;
+    }catch(error) {
+      console.error('oh no!' + error.message);
+    }
+  }
+
 }
 
 export class Quotes {
@@ -111,6 +121,28 @@ export class Quotes {
     }
 
   }
+  async getAdvice() {
+    try {
+      let response = await
+      fetch('https://api.adviceslip.com/advice');
+      let jsonifiedResponse = await response.json();
+      return jsonifiedResponse;
+    }catch(error) {
+      console.error("There was an error handling your request: " + error.message);
+
+    }
+
+  }
+
+  async getTrivia() {
+    try {
+      let response = await fetch('http://jservice.io/api/random');
+      let jsonifiedResponse = await response.json();
+      return jsonifiedResponse;
+    } catch(error) {
+      console.error("There was an error handling your request: " + error.message);
+  }
+}
 }
 
 export class Image {
@@ -134,6 +166,16 @@ export class Image {
       console.log(response);
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
+    } catch(error) {
+      console.error("there was an error handling this " + error.message);
+    }
+  }
+  async getRobot(giph) {
+    try {
+      let response = await fetch(`https://robohash.org/${giph}.png`);
+      // let jsonifiedResponse = await response.json();
+      console.log(response);
+      return response;
     } catch(error) {
       console.error("there was an error handling this " + error.message);
     }

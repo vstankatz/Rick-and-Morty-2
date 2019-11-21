@@ -31,6 +31,19 @@ function getRandom(min,max) {
 }
 
 $(document).ready(function() {
+let thisGuess = [];
+function checkAnswer(guess) {
+  console.log(guess);
+  console.log(thisGuess[0]);
+  if (guess === thisGuess[0]) {
+    $(".hideButton").show();
+    thisGuess = [];
+    $("input#triviaGuess").val('');
+  }else {
+    alert("YOURE DUMB!!");
+  }
+}
+
 
 (async function backgroundImage() {
 
@@ -72,48 +85,58 @@ $(document).ready(function() {
     $("#sceneOneContinue").click(function(){
       $(".sceneOne").hide();
       $(".sceneTwo").show();
+      $(".trivia1").show();
       $('img.mainCharacter').attr('src', mainCharacter.image[main]);
       (async function battle() {
         let indexRick = getRandom(1,20);
         let character = '?name=rick';
+        let triviaResponse = await quote.getTrivia();
         let response = await newCharacter.getCharacters(character);
         let kanyeResponse = await quote.getKanye();
         let imageUrl = await image.getImg();
         let dadJoke = await quote.getDad();
-        Promise.all([indexRick, character, response, kanyeResponse, imageUrl, dadJoke]).then(
+        Promise.all([indexRick, character, response, kanyeResponse, imageUrl, dadJoke, triviaResponse]).then(
         $('img#kanyeRickImg').attr('src', response.results[`${indexRick}`].image),
         $('.kanyeRickName').text('Kanye Rick West'),
         $('#kanye1').text(kanyeResponse.quote),
         $('body').css('background-image', 'url(' + imageUrl.url + ')'),
-
+        $(".triviaQuestion").text(triviaResponse[0].question),
+        $(".triviaAnswer").text(triviaResponse[0].answer),
+        console.log(triviaResponse),
 
         $('img.mainCharacter').attr('src', mainCharacter.image[main]),
         $('.mainCharacterName').text(mainCharacter.name[main]),
         $('#mainWords2').text(dadJoke.attachments[0].fallback));
+        thisGuess.push(triviaResponse[0].answer)
       })();
 
-    });
+
 
     $('#sceneTwoContinue').click(function() {
       $('.sceneTwo').hide();
       $('.sceneThree').show();
+      $(".trivia1").show();
+      $(".trivia2").hide();
       $('img.mainCharacter').attr('src', mainCharacter.image[main]);
-
       (async function battle2() {
+        let triviaResponse = await quote.getTrivia();
         let imageUrl = await image.getImg();
         let indexRick = getRandom(1,20);
         let character = '?name=rick';
         let response = await newCharacter.getCharacters(character);
         let darthResponse = await quote.getStars();
         let dadJoke = await quote.getDad();
-        Promise.all([imageUrl, indexRick, character, response, darthResponse, dadJoke]).then(
+        Promise.all([imageUrl, indexRick, character, response, darthResponse, dadJoke, triviaResponse]).then(
         $('body').css('background-image', 'url(' + imageUrl.url + ')'),
         $('img#darthRickImg').attr('src', response.results[`${indexRick}`].image),
         $('.darthRickName').text('Darth SkyRicker'),
+        $(".triviaQuestion").text(triviaResponse[0].question),
+        $(".triviaAnswer").text(triviaResponse[0].answer),
         $('#darth').text(darthResponse.starWarsQuote),
         $('img.mainCharacter').attr('src', mainCharacter.image[main]),
         $('.mainCharacterName').text(mainCharacter.name[main]),
         $('#mainWords3').text(dadJoke.attachments[0].fallback));
+        thisGuess.push(triviaResponse[0].answer)
       })();
 
 
@@ -140,6 +163,40 @@ $(document).ready(function() {
 
 
     });
+    $('#sceneFourContinue').click(function() {
+      $('.sceneFour').hide();
+      $('.sceneFive').show();
+      $('img.mainCharacter').attr('src', mainCharacter.image[main]);
+
+      (async function battle4() {
+        let imageUrl = await image.getImg();
+        let response = await image.getRobot(giph);
+        let adviceResponse = await quote.getAdvice();
+        let roboName = await newCharacter.getRandom();
+        let dadJoke = await quote.getDad();
+        Promise.all([imageUrl, response, adviceResponse, dadJoke]).then(
+        $('body').css('background-image', 'url(' + imageUrl.url + ')'),
+        $('img#roboImg').attr('src', response.url),
+      console.log(response),
+        $('.roboName').text(roboName.name + " " + roboName.surname),
+        $('#advice').text(adviceResponse.slip.advice),
+        $('img.mainCharacter').attr('src', mainCharacter.image[main]),
+        $('.mainCharacterName').text(mainCharacter.name[main]),
+        $('#mainWords5').text(dadJoke.attachments[0].fallback));
+      })();
+
+
+    });
 
   });
+
+});
+$("form#triviaForm").submit(function(event) {
+  event.preventDefault();
+  $(".trivia2").toggle();
+  let guess = $("input#triviaGuess").val();
+  checkAnswer(guess);
+
+});
+
 });

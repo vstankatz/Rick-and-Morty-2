@@ -1,4 +1,4 @@
-.sceneOne, .sceneTwo, .sceneThree, .sceneFour{
+.sceneOne, .sceneTwo, .sceneThree, .sceneFour, .sceneFive {
   display: none;
 }
 
@@ -55,4 +55,24 @@ opacity: 0.8;
 
 .header h1 {
   font-size: 75px;
+}
+
+img {
+  width: 300px;
+}
+
+.hideButton {
+  display: none;
+}
+
+.trivia1 {
+  display: none;
+  background-color: white;
+  text-align: center;
+}
+
+.trivia2{
+  display: none;
+  background-color: white;
+  text-align: center;
 }
