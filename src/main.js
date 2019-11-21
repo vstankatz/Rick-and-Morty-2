@@ -16,10 +16,12 @@ const mainCharacter = new Characters();
 })();
 
 (async function intialCharacter() {
-  await mainCharacter.initialChars();
-  $('img#rick').attr('src', mainCharacter.image[0]);
-  $('img#morty').attr('src', mainCharacter.image[1]);
-  $('img#jerry').attr('src', mainCharacter.image[2]);
+  let people = await mainCharacter.initialChars();
+  let imageUrl = await image.getImg();
+  Promise.all([people, imageUrl]). then(
+  $('img#rick').attr('src', mainCharacter.image[0]),
+  $('img#morty').attr('src', mainCharacter.image[1]),
+  $('img#jerry').attr('src', mainCharacter.image[2]));
 })();
 
 function getRandom(min,max) {
@@ -51,21 +53,19 @@ $(document).ready(function() {
       let indexRick = getRandom(1,20);
       let character = '?name=rick';
       let response = await newCharacter.getCharacters(character);
-      $('img.rickTrick').attr('src', response.results[`${indexRick}`].image);
-      $('.rickTrickName').text(response.results[`${indexRick}`].name);
       let norrisResponse = await quote.getNorris();
-      $('#norris1').text(norrisResponse.value.joke);
-      $('img.mainCharacter').attr('src', mainCharacter.image[main]);
       let dadJoke = await quote.getDad();
-      $('.mainCharacterName').text(mainCharacter.name[main]);
-      $('#mainWords1').text(dadJoke.attachments[0].fallback);
       let imageUrl = await image.getImg();
-      $('body').css('background-image', 'url(' + imageUrl.url + ')');
       let giphResponse = await image.getGiphy(giph);
-      console.log(giphResponse);
-      console.log(giph);
-      $('img#giphOutput').attr('src', giphResponse.data[0].images.downsized_large.url);
-      console.log(giphResponse.data[0].images.downsized_large.url);
+      Promise.all([indexRick, character, response, norrisResponse, dadJoke, imageUrl, giphResponse]).then(
+      $('img.rickTrick').attr('src', response.results[`${indexRick}`].image),
+      $('.rickTrickName').text(response.results[`${indexRick}`].name),
+      $('#norris1').text(norrisResponse.value.joke),
+      $('img.mainCharacter').attr('src', mainCharacter.image[main]),
+      $('.mainCharacterName').text(mainCharacter.name[main]),
+      $('#mainWords1').text(dadJoke.attachments[0].fallback),
+      $('body').css('background-image', 'url(' + imageUrl.url + ')'),
+      $('img#giphOutput').attr('src', giphResponse.data[0].images.downsized_large.url));
     })();
 
 
@@ -77,18 +77,19 @@ $(document).ready(function() {
         let indexRick = getRandom(1,20);
         let character = '?name=rick';
         let response = await newCharacter.getCharacters(character);
-        $('img#kanyeRickImg').attr('src', response.results[`${indexRick}`].image);
-        $('.kanyeRickName').text('Kanye Rick West');
         let kanyeResponse = await quote.getKanye();
-        $('#kanye1').text(kanyeResponse.quote);
         let imageUrl = await image.getImg();
-        $('body').css('background-image', 'url(' + imageUrl.url + ')');
-
-
-        $('img.mainCharacter').attr('src', mainCharacter.image[main]);
         let dadJoke = await quote.getDad();
-        $('.mainCharacterName').text(mainCharacter.name[main]);
-        $('#mainWords2').text(dadJoke.attachments[0].fallback);
+        Promise.all([indexRick, character, response, kanyeResponse, imageUrl, dadJoke]).then(
+        $('img#kanyeRickImg').attr('src', response.results[`${indexRick}`].image),
+        $('.kanyeRickName').text('Kanye Rick West'),
+        $('#kanye1').text(kanyeResponse.quote),
+        $('body').css('background-image', 'url(' + imageUrl.url + ')'),
+
+
+        $('img.mainCharacter').attr('src', mainCharacter.image[main]),
+        $('.mainCharacterName').text(mainCharacter.name[main]),
+        $('#mainWords2').text(dadJoke.attachments[0].fallback));
       })();
 
     });
@@ -100,18 +101,19 @@ $(document).ready(function() {
 
       (async function battle2() {
         let imageUrl = await image.getImg();
-        $('body').css('background-image', 'url(' + imageUrl.url + ')');
         let indexRick = getRandom(1,20);
         let character = '?name=rick';
         let response = await newCharacter.getCharacters(character);
-        $('img#darthRickImg').attr('src', response.results[`${indexRick}`].image);
-        $('.darthRickName').text('Darth SkyRicker');
         let darthResponse = await quote.getStars();
-        $('#darth').text(darthResponse.starWarsQuote);
-        $('img.mainCharacter').attr('src', mainCharacter.image[main]);
         let dadJoke = await quote.getDad();
-        $('.mainCharacterName').text(mainCharacter.name[main]);
-        $('#mainWords3').text(dadJoke.attachments[0].fallback);
+        Promise.all([imageUrl, indexRick, character, response, darthResponse, dadJoke]).then(
+        $('body').css('background-image', 'url(' + imageUrl.url + ')'),
+        $('img#darthRickImg').attr('src', response.results[`${indexRick}`].image),
+        $('.darthRickName').text('Darth SkyRicker'),
+        $('#darth').text(darthResponse.starWarsQuote),
+        $('img.mainCharacter').attr('src', mainCharacter.image[main]),
+        $('.mainCharacterName').text(mainCharacter.name[main]),
+        $('#mainWords3').text(dadJoke.attachments[0].fallback));
       })();
 
 
@@ -123,16 +125,17 @@ $(document).ready(function() {
 
       (async function battle3() {
         let imageUrl = await image.getImg();
-        $('body').css('background-image', 'url(' + imageUrl.url + ')');
         let response = await newCharacter.getBreakingCharacter();
-        $('img#breakImg').attr('src', response[0].img);
-        $('.breakName').text(response[0].name);
         let breakResponse = await quote.getBreakingQuote();
-        $('#break').text(breakResponse[0].quote);
-        $('img.mainCharacter').attr('src', mainCharacter.image[main]);
         let dadJoke = await quote.getDad();
-        $('.mainCharacterName').text(mainCharacter.name[main]);
-        $('#mainWords4').text(dadJoke.attachments[0].fallback);
+        Promise.all([imageUrl, response, breakResponse, dadJoke]).then(
+        $('body').css('background-image', 'url(' + imageUrl.url + ')'),
+        $('img#breakImg').attr('src', response[0].img),
+        $('.breakName').text(response[0].name),
+        $('#break').text(breakResponse[0].quote),
+        $('img.mainCharacter').attr('src', mainCharacter.image[main]),
+        $('.mainCharacterName').text(mainCharacter.name[main]),
+        $('#mainWords4').text(dadJoke.attachments[0].fallback));
       })();
 
 
