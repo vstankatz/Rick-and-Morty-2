@@ -7,8 +7,8 @@ describe('character', () => {
     (async() => {
       let mainCharacter = new Characters();
       const response = await mainCharacter.getCharacters(character);
-      getElements(response)
+      getElements(response);
       expect(response.results.id).toEqual(2);
-    })
-  })
-})
+    });
+  });
+});

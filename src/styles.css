@@ -1,4 +1,4 @@
-.sceneOne, .sceneTwo, .sceneThree {
+.sceneOne, .sceneTwo, .sceneThree, .sceneFour{
   display: none;
 }
 
@@ -6,9 +6,12 @@
   float: left;
   margin-right: 30px;
   width: 300px;
+  background-color: white;
 }
+
 
 .rickTrickDiv {
   float: right;
   width: 300px;
+  background-color: white;
 }
