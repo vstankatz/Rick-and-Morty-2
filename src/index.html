@@ -1,131 +1,134 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
 </head>
+
 <body>
-<div class="container">
-  <div class="container header">
-    <h1>Rick and Morty's Awesome API Adventure! </h1>
+  <div class="container">
+    <div class="container header">
+      <h1>Rick and Morty's Awesome API Adventure! </h1>
 
-  </div>
-  <div class="pickCharacter">
-    <form id="pickCharacter">
-      <label>Morty
-      <input type="radio" name="characterChoice" value="1">
-      <img id="morty" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="Morty Image">
-</label>
-      <label>Rick
-      <input type="radio" name="characterChoice" value="0">
-      <img id="rick" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="Rick Image">
-    </label>
+    </div>
+    <div class="pickCharacter">
+      <form id="pickCharacter">
+        <label>Morty
+          <input type="radio" name="characterChoice" value="1">
+          <img id="morty" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="Morty Image">
+        </label>
+        <label>Rick
+          <input type="radio" name="characterChoice" value="0">
+          <img id="rick" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="Rick Image">
+        </label>
 
-      <label>Jerry
-      <input type="radio" name="characterChoice" value="2">
-      <img id="jerry" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="Jerry Image"></label>
+        <label>Jerry
+          <input type="radio" name="characterChoice" value="2">
+          <img id="jerry" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="Jerry Image"></label>
 
-      <div class="giphySearch">
-        <label for="giphy">Search for a Giph!</label>
-        <input type="text" id="giphy">
+        <div class="giphySearch">
+          <label for="giphy">Search for a Giph!</label>
+          <input type="text" id="giphy">
+        </div>
+
+        <button type="submit" name="button">Submit</button>
+
+      </form>
+    </div>
+    <div class="sceneOne">
+      <div class="main">
+        <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
+        <h4><span class="mainCharacterName"></span> says:</h4>
+        <h3>'<span id="mainWords1"> </span>'</h3>
+      </div>
+      <div class="rickTrickDiv">
+        <img class="rickTrick" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
+        <h4><span class='rickTrickName'></span> says:</h4>
+        <h3>'<span id="norris1"></span>'</h3>
+      </div>
+      <button id="sceneOneContinue" type="button" name="button">Continue</button>
+      <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png">
+    </div>
+
+
+    <div class="sceneTwo">
+      <div class="main">
+        <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
+        <h4><span class="mainCharacterName"></span> says:</h4>
+        <h3>'<span id="mainWords2"> </span>'</h3>
+      </div>
+      <div class="rickTrickDiv">
+        <img id="kanyeRickImg" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
+        <h4><span class='kanyeRickName'></span> says:</h4>
+        <h3>'<span id="kanye1"></span>'</h3>
+      </div>
+      <div class="hideButton">
+        <button id="sceneTwoContinue" type="button" name="button">Continue</button>
+
+      </div>
+      <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png">
+    </div>
+
+    <form id="triviaForm">
+      <div class="trivia1">
+        <h4 class="triviaQuestion"></h4>
+        <input type="text" id="triviaGuess">
+        <button type="submit" name="button">Check Answer</button>
+      </div>
+      <div class="trivia2">
+        <h4 class="triviaAnswer"></h4>
+
       </div>
 
-      <button type="submit" name="button">Submit</button>
-
     </form>
+    <div class="sceneThree">
+      <div class="main">
+        <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
+        <h4><span class="mainCharacterName"></span> says:</h4>
+        <h3>'<span id="mainWords3"> </span>'</h3>
+      </div>
+
+      <div class="rickTrickDiv">
+        <img id="darthRickImg" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
+        <h4><span class='darthRickName'></span> says:</h4>
+        <h3>'<span id="darth"></span>'</h3>
+      </div>
+      <button id="sceneThreeContinue" type="button" name="button">Continue</button>
+      <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png">
+    </div>
+    <div class="sceneFour">
+      <div class="main">
+        <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
+        <h4><span class="mainCharacterName"></span> says:</h4>
+        <h3>'<span id="mainWords4"> </span>'</h3>
+      </div>
+
+      <div class="rickTrickDiv">
+        <img id="breakImg" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
+        <h4><span class='breakName'></span> says:</h4>
+        <h3>'<span id="break"></span>'</h3>
+      </div>
+      <button id="sceneFourContinue" type="button" name="button">Continue</button>
+      <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png">
+    </div>
+    <div class="sceneFive">
+      <div class="main">
+        <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
+        <h4><span class="mainCharacterName"></span> says:</h4>
+        <h3>'<span id="mainWords5"> </span>'</h3>
+      </div>
+
+      <div class="rickTrickDiv">
+        <img id="roboImg" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
+        <h4><span class='roboName'></span> says:</h4>
+        <h3>'<span id="advice"></span>'</h3>
+      </div>
+      <button id="sceneFiveContinue" type="button" name="button">Continue</button>
+      <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png">
+    </div>
+
+
   </div>
-  <div class="sceneOne">
-    <div class="main">
-    <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
-    <h4><span class="mainCharacterName"></span> says:</h4>
-    <h3>'<span id="mainWords1"> </span>'</h3>
-    </div>
-    <div class="rickTrickDiv">
-      <img class="rickTrick" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
-      <h4><span class='rickTrickName'></span> says:</h4>
-      <h3>'<span id="norris1"></span>'</h3>
-    </div>
-    <button id="sceneOneContinue"type="button" name="button">Continue</button>
-    <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" >
-  </div>
+</body>
 
-
-  <div class="sceneTwo">
-    <div class="main">
-    <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
-    <h4><span class="mainCharacterName"></span> says:</h4>
-    <h3>'<span id="mainWords2"> </span>'</h3>
-    </div>
-    <div class="rickTrickDiv">
-      <img id="kanyeRickImg" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
-      <h4><span class='kanyeRickName'></span> says:</h4>
-      <h3>'<span id="kanye1"></span>'</h3>
-    </div>
-    <div class="hideButton">
-      <button id="sceneTwoContinue"type="button" name="button">Continue</button>
-
-    </div>
-    <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" >
-  </div>
-
-<form id="triviaForm" >
-  <div class="trivia1">
-    <h4 class="triviaQuestion"></h4>
-    <input type="text" id="triviaGuess">
-    <button type="submit" name="button">Check Answer</button>
-  </div>
-    <div class="trivia2">
-      <h4 class="triviaAnswer"></h4>
-
-    </div>
-
-</form>
-  <div class="sceneThree">
-    <div class="main">
-    <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
-    <h4><span class="mainCharacterName"></span> says:</h4>
-    <h3>'<span id="mainWords3"> </span>'</h3>
-    </div>
-
-    <div class="rickTrickDiv">
-      <img id="darthRickImg" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
-      <h4><span class='darthRickName'></span> says:</h4>
-      <h3>'<span id="darth"></span>'</h3>
-    </div>
-    <button id="sceneThreeContinue"type="button" name="button">Continue</button>
-    <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" >
-  </div>
-  <div class="sceneFour">
-    <div class="main">
-    <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
-    <h4><span class="mainCharacterName"></span> says:</h4>
-    <h3>'<span id="mainWords4"> </span>'</h3>
-    </div>
-
-    <div class="rickTrickDiv">
-      <img id="breakImg" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
-      <h4><span class='breakName'></span> says:</h4>
-      <h3>'<span id="break"></span>'</h3>
-    </div>
-    <button id="sceneFourContinue"type="button" name="button">Continue</button>
-    <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" >
-  </div>
-  <div class="sceneFive">
-    <div class="main">
-    <img class='mainCharacter' src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="image of main character">
-    <h4><span class="mainCharacterName"></span> says:</h4>
-    <h3>'<span id="mainWords5"> </span>'</h3>
-    </div>
-
-    <div class="rickTrickDiv">
-      <img id="roboImg" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" alt="">
-      <h4><span class='roboName'></span> says:</h4>
-      <h3>'<span id="advice"></span>'</h3>
-    </div>
-    <button id="sceneFiveContinue"type="button" name="button">Continue</button>
-    <img id="giphOutput" src="https://journalism.berkeley.edu/wp-content/uploads/profile-placeholder.png" >
-  </div>
-
-
-</div>
-  </body>
-  </html>
+</html>

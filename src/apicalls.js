@@ -1,4 +1,3 @@
-
 export class Characters {
   constructor(mainCharacter) {
     this.mainCharacter = mainCharacter;
@@ -11,7 +10,7 @@ export class Characters {
       let response = await fetch(`https://rickandmortyapi.com/api/character/${character}`);
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    } catch(error) {
+    } catch (error) {
 
       console.error("There was an error handling your request: " + error.message);
     }
@@ -19,13 +18,13 @@ export class Characters {
 
   async initialChars() {
     try {
-      let charArray = [1,2,5];
-      for (let i=0; i<charArray.length; i++) {
+      let charArray = [1, 2, 5];
+      for (let i = 0; i < charArray.length; i++) {
         let thisResponse = await this.getCharacters(charArray[i]);
         this.image.push(thisResponse.image);
         this.name.push(thisResponse.name);
       }
-    } catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
     }
   }
@@ -35,7 +34,7 @@ export class Characters {
       let response = await fetch(`https://www.breakingbadapi.com/api/character/random`);
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    } catch(error) {
+    } catch (error) {
 
       console.error("There was an error handling your request: " + error.message);
     }
@@ -46,7 +45,7 @@ export class Characters {
       let response = await fetch(`https://uinames.com/api/`);
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    }catch(error) {
+    } catch (error) {
       console.error('oh no!' + error.message);
     }
   }
@@ -62,7 +61,7 @@ export class Quotes {
       fetch(`http://api.icndb.com/jokes/random`);
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    }catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
 
     }
@@ -73,7 +72,7 @@ export class Quotes {
       fetch(`https://www.breakingbadapi.com/api/quote/random`);
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    }catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
 
     }
@@ -82,14 +81,15 @@ export class Quotes {
   async getDad() {
     try {
       let response = await
-      fetch('https://icanhazdadjoke.com/slack',
-        { headers: {
-          'Content-Type': 'application/json'}
-        });
+      fetch('https://icanhazdadjoke.com/slack', {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    }catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
 
     }
@@ -102,7 +102,7 @@ export class Quotes {
 
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    }catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
 
     }
@@ -115,7 +115,7 @@ export class Quotes {
       fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote');
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    }catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
 
     }
@@ -127,7 +127,7 @@ export class Quotes {
       fetch('https://api.adviceslip.com/advice');
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    }catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
 
     }
@@ -139,10 +139,10 @@ export class Quotes {
       let response = await fetch('http://jservice.io/api/random');
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    } catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
+    }
   }
-}
 }
 
 export class Image {
@@ -152,7 +152,7 @@ export class Image {
       fetch('http://www.splashbase.co/api/v1/images/random');
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    }catch(error) {
+    } catch (error) {
       console.error("There was an error handling your request: " + error.message);
 
     }
@@ -162,11 +162,9 @@ export class Image {
   async getGiphy(giph) {
     try {
       let response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.API_KEY}&q=${giph}&limit=1&offset=&rating=G&lang=en`);
-      console.log(giph);
-      console.log(response);
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
-    } catch(error) {
+    } catch (error) {
       console.error("there was an error handling this " + error.message);
     }
   }
@@ -174,9 +172,8 @@ export class Image {
     try {
       let response = await fetch(`https://robohash.org/${giph}.png`);
       // let jsonifiedResponse = await response.json();
-      console.log(response);
       return response;
-    } catch(error) {
+    } catch (error) {
       console.error("there was an error handling this " + error.message);
     }
   }
