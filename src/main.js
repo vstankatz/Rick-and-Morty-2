@@ -147,7 +147,7 @@ $(document).ready(function() {
         $('.sceneFour').show();
         $('.sceneThree').hide();
         $('img.mainCharacter').attr('src', mainCharacter.image[main]);
-
+        $("form#triviaForm").hide();
         (async function battle3() {
           let imageUrl = await image.getImg();
           let response = await newCharacter.getBreakingCharacter();
